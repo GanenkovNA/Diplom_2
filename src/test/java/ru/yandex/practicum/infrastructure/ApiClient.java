@@ -5,10 +5,8 @@ import io.restassured.config.HttpClientConfig;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 import java.net.SocketTimeoutException;
-import java.util.Map;
 import java.util.function.Supplier;
 
 import static io.restassured.RestAssured.given;
