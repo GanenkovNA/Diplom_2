@@ -1,21 +1,27 @@
 package ru.yandex.practicum.stellar_burgers_test.auth.creation_user;
 
+import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.model.Status;
 import io.restassured.response.Response;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.practicum.stellar_burgers.auth.UserCreationRequestDto;
 import ru.yandex.practicum.stellar_burgers.auth.UserCreationResponseDto;
 import ru.yandex.practicum.stellar_burgers_test.auth.AuthBase;
 
+import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.*;
-import static ru.yandex.practicum.stellar_burgers_test.auth.AuthService.deleteUser;
 import static ru.yandex.practicum.stellar_burgers_test.auth.AuthService.registerUser;
 
+@DisplayName("Успешная регистрация пользователя")
 public class CreationUserPositiveTest extends AuthBase {
-    private String accessToken;
-    private UserCreationRequestDto testUser;
+
+    @Before
+    public void setUpTest(){
+        createTestUser();
+    }
 
     @Test
     @DisplayName("Успешная регистрация пользователя")
@@ -25,7 +31,7 @@ public class CreationUserPositiveTest extends AuthBase {
         Response response = registerUser(user);
 
         // Проверка статус кода
-        response.then().statusCode(200);
+        response.then().statusCode(SC_OK);
 
         // Парсинг ответа
         UserCreationResponseDto responseBody = response.as(UserCreationResponseDto.class);
@@ -41,7 +47,12 @@ public class CreationUserPositiveTest extends AuthBase {
     @After
     public void tearDown() {
         if (user.getAccessToken() != null) {
-            deleteUser(user);
+            try{
+                deleteTestUser();
+            } catch (AssertionError e) {
+                Allure.getLifecycle().updateStep(step -> step.setStatus(Status.BROKEN));
+                Allure.addAttachment("Ошибка", "text/plain", e.getMessage());
+            }
         }
     }
 }

@@ -17,6 +17,8 @@
         <rest-assured.version>5.5.2</rest-assured.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.32</lombok.version>
+        <assertj.version>3.27.3</assertj.version>
+        <jackson.version>2.19.0</jackson.version>
     </properties>
 
     <dependencies>
@@ -39,6 +41,7 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-junit4</artifactId>
             <version>${allure.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -70,7 +73,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.19.0</version>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- AssertJ Core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
