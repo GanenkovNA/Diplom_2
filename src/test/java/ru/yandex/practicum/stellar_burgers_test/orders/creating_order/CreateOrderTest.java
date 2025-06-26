@@ -1,5 +1,7 @@
 package ru.yandex.practicum.stellar_burgers_test.orders.creating_order;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,6 +13,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static ru.yandex.practicum.infrastructure.allure_custom.PrettyJsonAttachmentInAllure.prettyJsonAttachment;
 import static ru.yandex.practicum.stellar_burgers_test.orders.OrdersService.createOrder;
 
+@DisplayName("Создание заказа с ингредиентами без авторизации")
 public class CreateOrderTest extends OrdersBase {
 
     @Before
@@ -19,6 +22,8 @@ public class CreateOrderTest extends OrdersBase {
     }
 
     @Test
+    @DisplayName("Создание заказа с ингредиентами без авторизации")
+    @Description("Проверка создания заказа с ингредиентами")
     public void shouldCreateOrder(){
         // Выполнение запроса
         Response response = createOrder(order);
@@ -31,6 +36,7 @@ public class CreateOrderTest extends OrdersBase {
         // Парсинг ответа и его вывод в Allure
         OrderResponseDTO responseBody = response.as(OrderResponseDTO.class);
         prettyJsonAttachment(responseBody);
+
         // Проверки ответа
         step("Проверка тела",
                 () -> {

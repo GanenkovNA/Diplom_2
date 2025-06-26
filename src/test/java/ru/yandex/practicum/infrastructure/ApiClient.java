@@ -56,6 +56,18 @@ public class ApiClient {
         );
     }
 
+    // POST-запрос с токеном
+    public static Response post(String path, String accessToken, Object body, String actionName) {
+        return sendRequest(() ->
+                        given()
+                                .contentType(ContentType.JSON)
+                                .header("Authorization", accessToken)
+                                .body(body)
+                                .post(path),
+                actionName
+        );
+    }
+
     // DELETE-запрос
     public static Response delete(String path, String accessToken, String actionName) {
         return sendRequest(() ->

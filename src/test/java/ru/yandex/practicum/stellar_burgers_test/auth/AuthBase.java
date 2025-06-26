@@ -44,4 +44,8 @@ public class AuthBase extends StellarBurgerBase {
         Response response = deleteUser(testUser);
         response.then().statusCode(SC_ACCEPTED);
     }
+
+    public UserDto getUser(){
+        return testUser;
+    }
 }
