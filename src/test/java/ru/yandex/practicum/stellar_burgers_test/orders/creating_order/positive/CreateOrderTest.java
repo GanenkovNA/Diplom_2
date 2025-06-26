@@ -1,4 +1,4 @@
-package ru.yandex.practicum.stellar_burgers_test.orders.creating_order;
+package ru.yandex.practicum.stellar_burgers_test.orders.creating_order.positive;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -18,7 +18,7 @@ public class CreateOrderTest extends OrdersBase {
 
     @Before
     public void setUpTest(){
-        setOrder();
+        setValidOrder();
     }
 
     @Test
