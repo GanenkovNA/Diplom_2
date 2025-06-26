@@ -5,11 +5,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import ru.yandex.practicum.infrastructure.ApiClient;
+import ru.yandex.practicum.stellar_burgers.auth.UserAuthorizationRequestDto;
 import ru.yandex.practicum.stellar_burgers.auth.UserRegistrationRequestDto;
 import ru.yandex.practicum.stellar_burgers.auth.UserDto;
 
 public class AuthService {
     protected static final String REGISTER_PATH = "/api/auth/register";
+    protected static final String AUTHORIZATION_PATH = "/api/auth/login";
     protected static final String DELETE_USER_PATH = "/api/auth/user";
 
     // Регистрация пользователя
@@ -41,6 +43,17 @@ public class AuthService {
         return ApiClient.post(REGISTER_PATH,
                 jsonWithNulls,
                 "Регистрация с null-полем" + user.getEmail());
+    }
+
+    public static Response authorizationUser(UserDto user){
+        UserAuthorizationRequestDto userDto = UserAuthorizationRequestDto.builder()
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .build();
+
+        return ApiClient.post(AUTHORIZATION_PATH,
+                userDto,
+                "Авторизация пользователя " + user.getEmail());
     }
 
     // Удаление пользователя
