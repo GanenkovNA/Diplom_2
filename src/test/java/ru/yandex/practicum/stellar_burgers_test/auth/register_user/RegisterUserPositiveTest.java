@@ -1,25 +1,22 @@
-package ru.yandex.practicum.stellar_burgers_test.auth.creation_user;
+package ru.yandex.practicum.stellar_burgers_test.auth.register_user;
 
-import io.qameta.allure.Allure;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
-import io.qameta.allure.model.Status;
 import io.restassured.response.Response;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.practicum.stellar_burgers.auth.UserCreationResponseDto;
+import ru.yandex.practicum.stellar_burgers.auth.UserRegistrationResponseDto;
 import ru.yandex.practicum.stellar_burgers_test.auth.AuthBase;
 
 import static io.qameta.allure.Allure.step;
 import static org.apache.http.HttpStatus.SC_OK;
+import static ru.yandex.practicum.infrastructure.allure_custom.CatchTearDownFail.catchTearDownFail;
 import static ru.yandex.practicum.infrastructure.allure_custom.PrettyJsonAttachmentInAllure.prettyJsonAttachment;
 import static ru.yandex.practicum.stellar_burgers_test.auth.AuthService.registerUser;
 
-@DisplayName("Успешная регистрация пользователя")
-public class CreationUserPositiveTest extends AuthBase {
-    private SoftAssertions softly = new SoftAssertions();
+@DisplayName("Регистрация уникального пользователя")
+public class RegisterUserPositiveTest extends AuthBase {
 
     @Before
     public void setUpTest(){
@@ -27,11 +24,11 @@ public class CreationUserPositiveTest extends AuthBase {
     }
 
     @Test
-    @DisplayName("Успешная регистрация пользователя")
+    @DisplayName("Регистрация уникального пользователя")
     @Description("Проверка что пользователь может зарегистрироваться с валидными данными")
-    public void userCanBeRegistered() {
+    public void userShouldBeRegistered() {
         // Выполнение запроса
-        Response response = registerUser(user);
+        Response response = registerUser(testUser);
 
         // Проверка статус кода
         step("Проверка статус кода - " + SC_OK,
@@ -39,8 +36,8 @@ public class CreationUserPositiveTest extends AuthBase {
         );
 
         // Парсинг ответа и его вывод в Allure
-        UserCreationResponseDto responseBody = response.as(UserCreationResponseDto.class);
-        user.setAccessToken(responseBody.getAccessToken());
+        UserRegistrationResponseDto responseBody = response.as(UserRegistrationResponseDto.class);
+        testUser.setAccessToken(responseBody.getAccessToken());
         prettyJsonAttachment(responseBody);
 
         // Проверки ответа
@@ -51,10 +48,10 @@ public class CreationUserPositiveTest extends AuthBase {
                             .isTrue();
                     softly.assertThat(responseBody.getUser().getEmail())
                             .as("Проверка `email`")
-                            .isEqualTo(user.getEmail());
+                            .isEqualTo(testUser.getEmail());
                     softly.assertThat(responseBody.getUser().getName())
                             .as("Проверка `name`")
-                            .isEqualTo(user.getName());
+                            .isEqualTo(testUser.getName());
                     softly.assertThat(responseBody.getAccessToken())
                             .as("Проверка `accessToken`")
                             .isNotNull();
@@ -67,13 +64,8 @@ public class CreationUserPositiveTest extends AuthBase {
 
     @After
     public void tearDown() {
-        if (user.getAccessToken() != null) {
-            try{
-                deleteTestUser();
-            } catch (AssertionError e) {
-                Allure.getLifecycle().updateStep(step -> step.setStatus(Status.BROKEN));
-                Allure.addAttachment("Ошибка", "text/plain", e.getMessage());
-            }
+        if (testUser.getAccessToken() != null) {
+            catchTearDownFail(this::deleteTestUser);
         }
     }
 }
