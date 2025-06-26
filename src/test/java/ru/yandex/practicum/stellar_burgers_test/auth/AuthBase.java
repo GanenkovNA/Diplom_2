@@ -17,16 +17,16 @@ public class AuthBase extends StellarBurgerBase {
     protected UserDto testUser;
     protected Faker faker = new Faker();
 
-    // JavaFaker/DataFaker !!!
     @Step("Создание тестового пользователя")
     public void createTestUser(){
         testUser = UserDto.builder()
-                .email("bobr@dobr.net")
-                .password("password")
-                .name("userName")
+                .email(faker.internet().emailAddress())
+                .password(faker.internet().password())
+                .name(faker.name().name())
                 .build();
 
-        Allure.addAttachment("Информация о пользователе", "text/plain", "Email: " + testUser.getEmail() + "\nPassword: " + testUser.getPassword());
+        Allure.addAttachment("Информация о пользователе", "text/plain",
+                "Email: " + testUser.getEmail() + "\nPassword: " + testUser.getPassword());
     }
 
     @Step("Регистрация тестового пользователя")
