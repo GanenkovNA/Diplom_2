@@ -14,12 +14,12 @@ import ru.yandex.practicum.stellar_burgers_test.auth.AuthBase;
 
 import static io.qameta.allure.Allure.step;
 import static org.apache.http.HttpStatus.SC_OK;
-import static ru.yandex.practicum.infrastructure.AllureMethods.prettyJsonAttachment;
+import static ru.yandex.practicum.infrastructure.allure_custom.PrettyJsonAttachmentInAllure.prettyJsonAttachment;
 import static ru.yandex.practicum.stellar_burgers_test.auth.AuthService.registerUser;
 
 @DisplayName("Успешная регистрация пользователя")
 public class CreationUserPositiveTest extends AuthBase {
-    SoftAssertions softly = new SoftAssertions();
+    private SoftAssertions softly = new SoftAssertions();
 
     @Before
     public void setUpTest(){
@@ -44,29 +44,25 @@ public class CreationUserPositiveTest extends AuthBase {
         prettyJsonAttachment(responseBody);
 
         // Проверки ответа
-        step("Проверка значения `success`",
-                () -> softly
-                        .assertThat(responseBody.isSuccess())
-                        .isTrue()
-        );
-        step("Проверка значения `email`",
-                () -> softly
-                        .assertThat(responseBody.getUser().getEmail())
-                        .isEqualTo(user.getEmail())
-        );
-        step("Проверка значения `name`",
-                () -> softly
-                        .assertThat(responseBody.getUser().getName())
-                        .isEqualTo(user.getName())
-                        //.isEqualTo("asd")
-        );
-        step("Проверка значения `accessToken`",
-                () -> softly
-                        .assertThat(responseBody.getAccessToken())
-                        .isNotNull()
-        );
-
-        softly.assertAll();
+        step("Проверка тела",
+                () -> {
+                    softly.assertThat(responseBody.isSuccess())
+                            .as("Проверка `success`")
+                            .isTrue();
+                    softly.assertThat(responseBody.getUser().getEmail())
+                            .as("Проверка `email`")
+                            .isEqualTo(user.getEmail());
+                    softly.assertThat(responseBody.getUser().getName())
+                            .as("Проверка `name`")
+                            .isEqualTo(user.getName());
+                    softly.assertThat(responseBody.getAccessToken())
+                            .as("Проверка `accessToken`")
+                            .isNotNull();
+                    softly.assertThat(responseBody.getRefreshToken())
+                            .as("Проверка `refreshToken")
+                            .isNotNull();
+                    softly.assertAll();
+                });
     }
 
     @After
