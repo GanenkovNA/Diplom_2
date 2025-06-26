@@ -3,6 +3,7 @@ package ru.yandex.practicum.stellar_burgers_test.auth;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import net.datafaker.Faker;
 import ru.yandex.practicum.stellar_burgers.auth.UserRegistrationResponseDto;
 import ru.yandex.practicum.stellar_burgers_test.StellarBurgerBase;
 import ru.yandex.practicum.stellar_burgers.auth.UserDto;
@@ -14,6 +15,7 @@ import static ru.yandex.practicum.stellar_burgers_test.auth.AuthService.register
 
 public class AuthBase extends StellarBurgerBase {
     protected UserDto testUser;
+    protected Faker faker = new Faker();
 
     // JavaFaker/DataFaker !!!
     @Step("Создание тестового пользователя")

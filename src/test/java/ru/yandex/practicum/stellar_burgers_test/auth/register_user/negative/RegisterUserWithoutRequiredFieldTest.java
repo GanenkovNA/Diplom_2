@@ -47,10 +47,20 @@ public class RegisterUserWithoutRequiredFieldTest extends AuthBase {
     public void shouldReturnErrorWhenRequiredFieldMiss(){
         //Удаление поля
         switch (deleteField){
-            case "email": {testUser.setEmail(null);}
-            case "password": {testUser.setPassword(null);}
-            case "name": {testUser.setName(null);}
+            case "email": {
+                testUser.setEmail(null);
+                break;
+            }
+            case "password": {
+                testUser.setPassword(null);
+                break;
+            }
+            case "name": {
+                testUser.setName(null);
+                break;
+            }
         }
+
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Создание пользователя без поля " + deleteField));
 
@@ -82,12 +92,22 @@ public class RegisterUserWithoutRequiredFieldTest extends AuthBase {
     @Description("Должно вернуться сообщение об ошибке")
     @Test
     public void shouldReturnErrorWhenRequiredFieldIsNull() throws JsonProcessingException {
-        //Удаление поля
+        //Установка null в поле
         switch (deleteField){
-            case "email": {testUser.setEmail(null);}
-            case "password": {testUser.setPassword(null);}
-            case "name": {testUser.setName(null);}
+            case "email": {
+                testUser.setEmail(null);
+                break;
+            }
+            case "password": {
+                testUser.setPassword(null);
+                break;
+            }
+            case "name": {
+                testUser.setName(null);
+                break;
+            }
         }
+
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Создание пользователя с Null полем " + deleteField));
 
