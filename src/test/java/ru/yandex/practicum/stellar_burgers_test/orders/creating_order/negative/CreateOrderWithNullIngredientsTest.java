@@ -33,7 +33,6 @@ public class CreateOrderWithNullIngredientsTest extends OrdersBase {
     public static Collection<String> data() {
         return Arrays.asList(
                 "null",
-                //"[null,null]"
                 "[]"
         );
     }
@@ -46,27 +45,18 @@ public class CreateOrderWithNullIngredientsTest extends OrdersBase {
                 setOrder(null);
                 break;
             }
-            /*
-            Тест падает
-            case "[null,null]": {
-                setOrder(new String[]{null,null});
-                break;
-            }
-             */
             case "[]": {
                 setOrder(new String[0]);
                 break;
             }
         }
-
-
     }
 
     @Test
     @Description("Должно вернуться сообщение об ошибке")
     public void shouldReturnErrorWhenOrderHasNullIngredients() throws JsonProcessingException {
         Allure.getLifecycle().updateTestCase(testResult ->
-                testResult.setName("Создание заказа с значением `ingredients=" + setIngredientsValue + "`"));
+                testResult.setName("Создание заказа с значением `ingredients = " + setIngredientsValue + "`"));
 
         // Выполнение запроса
         Response response = createOrderWithNullField(order);

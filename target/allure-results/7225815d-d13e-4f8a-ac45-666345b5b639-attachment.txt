@@ -1,9 +1,0 @@
-{
-  "success" : true,
-  "accessToken" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWU0ZTMyOWVkMjgwMDAxYjYzOGQxOCIsImlhdCI6MTc1MTAxMDg2NiwiZXhwIjoxNzUxMDEyMDY2fQ.AMbNB0Kys_EC2-fNpjYQuoP9GWM53GckuZ233gfBe5I",
-  "refreshToken" : "79d20381b839c2c2ffaedb4e1fecc519195145311186e65dbc80f7cc89134f5fe73b41c380dcd37f",
-  "user" : {
-    "email" : "bernardina.leannon@yahoo.com",
-    "name" : "Marlin Sporer"
-  }
-}
