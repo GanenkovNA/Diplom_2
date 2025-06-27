@@ -1,0 +1,9 @@
+{
+  "success" : true,
+  "user" : {
+    "email" : "marx.marks@gmail.com",
+    "name" : "Tuyet Kovacek I"
+  },
+  "accessToken" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NWU0ZTM3OWVkMjgwMDAxYjYzOGQyMSIsImlhdCI6MTc1MTAxMDg3MSwiZXhwIjoxNzUxMDEyMDcxfQ.ADIB2W7D1YBHDKWQRq3sxzWzYGOxxa1CGyHf_3Vf5R4",
+  "refreshToken" : "28c3b6dad41f92f0f2cca5a5f78794a1fc57f09d8ab73e920d6ea2fe5def0f7e5e01b352d4cdc126"
+}
