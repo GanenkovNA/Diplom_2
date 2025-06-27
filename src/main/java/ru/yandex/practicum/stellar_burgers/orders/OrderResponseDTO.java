@@ -9,6 +9,7 @@ public class OrderResponseDTO {
     private boolean success;
     private String name;
     private Order order;
+    private String message;
 
     @Data
     public static class Order{

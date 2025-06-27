@@ -28,7 +28,6 @@ public class CreateOrderAsUserTest extends OrdersBase {
         testUserBase.createTestUser();
         testUserBase.registerTestUser();
         testUser = testUserBase.getUser();
-        order.setAccessToken(testUser.getAccessToken());
     }
 
     @Test
@@ -36,7 +35,7 @@ public class CreateOrderAsUserTest extends OrdersBase {
     @Description("Проверка создания заказа с ингредиентами как пользователь")
     public void shouldCreateOrderAsUser(){
         // Выполнение запроса
-        Response response = createOrderAsUser(order);
+        Response response = createOrderAsUser(order, testUser.getAccessToken());
 
         // Проверка статус кода
         step("Проверка статус кода - " + SC_OK,
@@ -74,6 +73,7 @@ public class CreateOrderAsUserTest extends OrdersBase {
                     softly.assertThat(responseBody.getOrder().getPrice())
                             .as("Проверка `price`")
                             .isNotNull();
+                    softly.assertAll();
                 });
     }
 
