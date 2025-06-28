@@ -1,9 +1,0 @@
-{
-  "success" : true,
-  "accessToken" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjA2ZGJmOWVkMjgwMDAxYjYzYjYxZCIsImlhdCI6MTc1MTE1MDAxNiwiZXhwIjoxNzUxMTUxMjE2fQ.IyUr3BJMaINXBu7h8R5SOYkj6lCsRGYwOHmqEjWyoz8",
-  "refreshToken" : "2ae347c2ad538da907b851f22cd9db3ccacf21f4b4f48a237a9ee9c27111acdcfe5c87dc6529bc60",
-  "user" : {
-    "email" : "mahalia.wiza@gmail.com",
-    "name" : "Gisele Kovacek IV"
-  }
-}
