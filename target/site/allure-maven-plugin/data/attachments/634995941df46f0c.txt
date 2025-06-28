@@ -1,0 +1,9 @@
+{
+  "success" : true,
+  "user" : {
+    "email" : "delia.rice@gmail.com",
+    "name" : "Jen Paucek"
+  },
+  "accessToken" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjA2ZGM3OWVkMjgwMDAxYjYzYjYyNiIsImlhdCI6MTc1MTE1MDAyMywiZXhwIjoxNzUxMTUxMjIzfQ.nVDcC1XN0WWq5vSYMe9Yn-YG-YInhm22_D9Bp-HzWDA",
+  "refreshToken" : "054dce5b2c1c04581e0515e939e57e80a0f4c44b9fb946e654370cfefe098828c01415269e21e5b5"
+}
