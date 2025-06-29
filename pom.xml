@@ -19,7 +19,7 @@
         <lombok.version>1.18.32</lombok.version>
         <assertj.version>3.27.3</assertj.version>
         <jackson.version>2.19.0</jackson.version>
-        <datafaker.version>2.4.3</datafaker.version>
+        <datafaker.version>1.8.1</datafaker.version>
     </properties>
 
     <dependencies>
