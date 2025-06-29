@@ -54,7 +54,7 @@ public class CreateOrderWithInvalidHashTest extends OrdersBase {
 
     @Test
     @Description("Проверка создания заказа с невалидным хэшем")
-    public void shouldReturnError500(){
+    public void shouldReturnError500Test(){
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Создание заказа с значением `ingredients = " + setIngredientsValue + "`"));
         // Выполнение запроса

@@ -33,7 +33,7 @@ public class CreateOrderAsUserTest extends OrdersBase {
     @Test
     @DisplayName("Создание заказа с ингредиентами с авторизацией")
     @Description("Проверка создания заказа с ингредиентами как пользователь")
-    public void shouldCreateOrderAsUser(){
+    public void shouldCreateOrderAsUserTest(){
         // Выполнение запроса
         Response response = createOrderAsUser(order, testUser.getAccessToken());
 

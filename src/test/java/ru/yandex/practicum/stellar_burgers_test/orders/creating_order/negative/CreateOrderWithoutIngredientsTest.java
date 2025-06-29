@@ -24,7 +24,7 @@ public class CreateOrderWithoutIngredientsTest extends OrdersBase {
     @Test
     @DisplayName("Создание заказа без ингредиентов")
     @Description("Проверка создания заказа без ингредиентов")
-    public void shouldReturnErrorWhenOrderWithoutIngredientsField(){
+    public void shouldReturnErrorWhenOrderWithoutIngredientsFieldTest(){
         // Выполнение запроса
         Response response = createOrder(order);
 

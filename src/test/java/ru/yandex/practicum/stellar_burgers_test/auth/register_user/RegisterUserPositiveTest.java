@@ -26,7 +26,7 @@ public class RegisterUserPositiveTest extends AuthBase {
     @Test
     @DisplayName("Регистрация уникального пользователя")
     @Description("Проверка что пользователь может зарегистрироваться с валидными данными")
-    public void userShouldBeRegistered() {
+    public void userShouldBeRegisteredTest() {
         // Выполнение запроса
         Response response = registerUser(testUser);
 

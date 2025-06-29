@@ -54,7 +54,7 @@ public class CreateOrderWithNullIngredientsTest extends OrdersBase {
 
     @Test
     @Description("Должно вернуться сообщение об ошибке")
-    public void shouldReturnErrorWhenOrderHasNullIngredients() throws JsonProcessingException {
+    public void shouldReturnErrorWhenOrderHasNullIngredientsTest() throws JsonProcessingException {
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Создание заказа с значением `ingredients = " + setIngredientsValue + "`"));
 

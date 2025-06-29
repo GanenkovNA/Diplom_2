@@ -62,7 +62,7 @@ public class RegisterUserWithoutRequiredFieldTest extends AuthBase {
 
     @Description("Должно вернуться сообщение об ошибке")
     @Test
-    public void shouldReturnErrorWhenRequiredFieldMiss(){
+    public void shouldReturnErrorWhenRequiredFieldMissTest(){
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Создание пользователя без поля " + deleteField));
 
@@ -93,7 +93,7 @@ public class RegisterUserWithoutRequiredFieldTest extends AuthBase {
 
     @Description("Должно вернуться сообщение об ошибке")
     @Test
-    public void shouldReturnErrorWhenRequiredFieldIsNull() throws JsonProcessingException {
+    public void shouldReturnErrorWhenRequiredFieldIsNullTest() throws JsonProcessingException {
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Создание пользователя с Null полем " + deleteField));
 

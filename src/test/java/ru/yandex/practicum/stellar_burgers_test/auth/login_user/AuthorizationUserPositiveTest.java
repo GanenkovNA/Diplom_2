@@ -26,7 +26,7 @@ public class AuthorizationUserPositiveTest extends AuthBase {
     @DisplayName("Авторизация существующего пользователя")
     @Description("Проверка что пользователь может авторизоваться с валидными данными")
     @Test
-    public void shouldLoginExistUser(){
+    public void shouldLoginExistUserTest(){
         // Выполнение запроса
         Response response = authorizationUser(testUser);
 

@@ -47,7 +47,7 @@ public class AuthorizationUserWithInvalidDataTest extends AuthBase {
 
     @Description("Должно вернуться сообщение об ошибке")
     @Test
-    public void shouldReturnErrorWhenDataInvalid(){
+    public void shouldReturnErrorWhenDataInvalidTest(){
         Allure.getLifecycle().updateTestCase(testResult ->
                 testResult.setName("Попытка авторизации пользователя с изменённым полем " + changeField));
 

@@ -24,7 +24,7 @@ public class CreateOrderTest extends OrdersBase {
     @Test
     @DisplayName("Создание заказа с ингредиентами без авторизации")
     @Description("Проверка создания заказа с ингредиентами")
-    public void shouldCreateOrder(){
+    public void shouldCreateOrderTest(){
         // Выполнение запроса
         Response response = createOrder(order);
 

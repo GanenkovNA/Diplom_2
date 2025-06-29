@@ -28,7 +28,7 @@ public class RegisterExistUserTest extends AuthBase {
     @Test
     @DisplayName("Создание пользователя, который уже зарегистрирован")
     @Description("Должно вернуться сообщение о существовании такого пользователя")
-    public void shouldReturnThatUserExist(){
+    public void shouldReturnThatUserExistTest(){
         // Выполнение запроса
         step("Повторная регистрация пользователя",
                 () -> response = registerUser(testUser)
